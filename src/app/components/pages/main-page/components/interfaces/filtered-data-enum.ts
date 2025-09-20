@@ -1,0 +1,1 @@
+export enum filterDataEnum {toDo = 1 , inProgress = 2 , review = 4 , done = 8}

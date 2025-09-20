@@ -1,0 +1,1 @@
+export enum taskTypes {toDo = 0 , inProgress = 1 , Review = 2 , Done = 3};

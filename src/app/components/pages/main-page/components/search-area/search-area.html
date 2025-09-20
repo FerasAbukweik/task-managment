@@ -1,0 +1,14 @@
+<div class="container">
+    @for(task of tasksData; track task ; let i = $index)
+    {
+        @if(i!=0)
+        {
+            <hr>
+        }
+    <div class="item row">
+        <span class="task">{{task.task}}</span>
+        <app-type-indicator [type]="task.type" [typesColors]="typesColors"></app-type-indicator>
+        <span class="type">{{tasksTypes[task.type]}}</span>
+    </div>
+    }
+</div>

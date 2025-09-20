@@ -1,0 +1,38 @@
+.container.column{
+    width: 140px;
+    gap: 5px;
+    color: rgb(114, 114, 114);
+    background-color: white;
+    box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.1);
+}
+.row{
+    gap: 10px;
+}
+.checkbox {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #d2d7da;
+  background: #f0f0f0;
+  border-radius: 50%;
+}
+
+.checkbox:checked {
+  background: #c2dfff;
+}
+
+.filter-button{
+    border: none;
+    border-radius: 0.4rem;
+    width: fit-content;
+    align-self: flex-end;
+    font-size: 1.2rem;
+    padding: 5px;
+    margin-top: 5px;
+    color: #444444;
+}
+
+
+.item , .filter-button , .checkbox{
+    cursor: pointer;
+}

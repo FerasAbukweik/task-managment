@@ -1,0 +1,10 @@
+<div class="container column">
+    <span class="header-text">{{toShowData.message}}</span>
+    <div class="row">
+    <button class="cancel button" type="button" (click)="isConfirmed.emit(false)">cancel</button>
+    <button class="Confirm button" type="button"
+    [style.background-color]="toShowData.confirmButtonColor"
+    (click)="isConfirmed.emit(true)"
+    >{{toShowData.confirmButtonText}}</button>
+    </div>
+</div>

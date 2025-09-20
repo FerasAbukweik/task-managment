@@ -1,0 +1,12 @@
+<form [formGroup]="chosenOptions!">
+    <div class="container column">
+    @for (tasktype of tasksTypes; track tasktype)
+    {
+        <div class="row">
+        <input type="checkbox" class="checkbox" id="{{tasktype}}" formControlName="{{tasktype.split(' ').join('')}}">
+        <label class="item" for="{{tasktype}}">{{tasktype}}</label>
+        </div>
+    }
+    <button class="filter-button" (click)="returnData()">Filter</button>
+</div>
+</form>

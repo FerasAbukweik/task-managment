@@ -1,0 +1,53 @@
+<div class="main column" >
+    <div class="row main-header">
+        <label for="search"><span class="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></span></label>
+        <div class="search-container">
+            <input type="text" class="container search-input" id="search"
+            [(ngModel)]="searchInput"
+            (ngModelChange)="showFilterOptions = false"
+            placeholder="Search">
+        <button class="filter-button" (click)="toggleShowFilterOptions()">
+            <i class="fa-solid fa-filter"></i></button>
+            @if(showFilterOptions)
+                {
+                  <app-filter-options
+                  [tasksTypes]="tasksTypes"
+                  (selected)="toggleShowFilterOptions();
+                  selectedFilterOptions = $event"
+                  [previouslySelectedOptions]="selectedFilterOptions">
+                </app-filter-options>
+                }
+        </div>
+        <span class="container">Today</span>
+        <span class="container">Week</span>
+        <span class="container">Month</span>
+    </div>
+    <span class="Task-Managment-text">Task Managment</span>
+    <div class="row body-row">
+        @for(tasksPerType of tasksData; track tasksPerType ; let i = $index)
+        {
+        <div class="container column">
+            <span class="header-text" [style.background-color]="typesColors[i]">{{tasksTypes[i]}}</span>
+            @for (task of tasksPerType; track task ; let j = $index) {
+            <span class="container" (click)="currTask=task; showEditTasks = true">
+                <span class="task">{{task.task}}</span>
+                <input type="checkbox" class="state-checkBox" (click)="$event.stopPropagation();"
+                [(ngModel)]="tasksData[i][j].state"
+                (ngModelChange)="toggleStatus(task.id , $event)">
+            </span>
+            }
+        </div>
+        }
+    </div>
+</div>
+
+@if(searchInput != "")
+{
+<app-search-area [tasksData]="filterDataForSearch()" [tasksTypes]="tasksTypes" [typesColors]="typesColors"></app-search-area>
+}
+
+@if(showEditTasks)
+{
+<app-edit-task [tasksTypes]="tasksTypes" (showThisMessage)="showEditTasks = false" [currTask]="currTask"></app-edit-task>
+}
+

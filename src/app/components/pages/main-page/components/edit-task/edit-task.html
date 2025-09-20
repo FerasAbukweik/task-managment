@@ -1,0 +1,42 @@
+<form [formGroup]="Data">
+    <div class="container column">
+        <div class="row header-row">
+        <span class="header-text">Task Name</span>
+        <button class="delete-button button" type="button" (click)="showConfirmDeleteMessage = true">Delete</button>
+        </div>
+        <label for="task-name">Task Name</label>
+        <input type="text" id="task-name" class="type-input" formControlName="taskName">
+        <div class="row">
+        <div class="column">
+        <label for="start-data">Start Date</label>
+        <input type="date" class="date" id="start-data" formControlName="startDate">
+        </div>
+        <div class="column">
+        <label for="goal-data">Goal Date</label>
+        <input type="date" class="date" id="goal-data" formControlName="goalDate">
+        </div>
+        </div>
+        <label for="options">Type</label>
+        <select class="options" id="options" formControlName="type">
+           @for(taskType of tasksTypes; track taskType; let i = $index)
+           {
+            <option value="{{i}}">{{taskType}}</option>
+           }
+        </select>
+        <div class="footer-row">
+        <button class="cancel-button button" type="button" (click)="showThisMessage.emit(false)">Cancel</button>
+        <button class="edit-button button" type="button" (click)="showConfirmEditMessage = true">Edit</button>
+        </div>
+    </div>
+</form>
+
+
+@if(showConfirmDeleteMessage)
+{
+<app-confirmation-message [toShowData]="confirmDeleteMessageData" (isConfirmed)="manageDeleteMessage($event)"></app-confirmation-message>
+}
+
+@if(showConfirmEditMessage)
+{
+<app-confirmation-message [toShowData]="confirmEditMessageData" (isConfirmed)="manageEditMessage($event)"></app-confirmation-message>
+}
