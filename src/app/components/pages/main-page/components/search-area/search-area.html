@@ -5,10 +5,16 @@
         {
             <hr>
         }
-    <div class="item row">
+    <div class="item row" (click)="currTask = task; showEditTasks = true">
         <span class="task">{{task.task}}</span>
         <app-type-indicator [type]="task.type" [typesColors]="typesColors"></app-type-indicator>
         <span class="type">{{tasksTypes[task.type]}}</span>
     </div>
     }
 </div>
+
+
+@if(showEditTasks)
+{
+<app-edit-task [tasksTypes]="tasksTypes" (showThisMessage)="showEditTasks = false" [currTask]="currTask"></app-edit-task>
+}

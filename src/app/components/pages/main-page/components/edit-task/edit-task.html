@@ -1,7 +1,7 @@
 <form [formGroup]="Data">
     <div class="container column">
         <div class="row header-row">
-        <span class="header-text">Task Name</span>
+        <span class="header-text">{{Data.value.taskName}}</span>
         <button class="delete-button button" type="button" (click)="showConfirmDeleteMessage = true">Delete</button>
         </div>
         <label for="task-name">Task Name</label>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup , FormControl , ReactiveFormsModule } from '@angular/forms';
-import { filterDataEnum } from '../interfaces/filtered-data-enum';
+import { filterDataEnum } from '../enums/filtered-data-enum'; 
 
 @Component({
   selector: 'app-filter-options',

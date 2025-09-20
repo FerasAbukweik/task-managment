@@ -4,7 +4,7 @@ import { SearchArea } from './components/search-area/search-area';
 import { FormsModule } from '@angular/forms';
 import { taskTypes } from '../../../enums/taskenums/task-type'; 
 import { FilterOptions } from "./components/filter-options/filter-options";
-import { filterDataEnum } from './components/interfaces/filtered-data-enum';
+import { filterDataEnum } from './components/enums/filtered-data-enum';
 import { EditTask } from './components/edit-task/edit-task';
 
 @Component({
@@ -87,7 +87,7 @@ filterDataForSearch(): TaskData[] {
 
 toggleStatus(taskId : number , newStatus : boolean)
 {
-
+  
 }
 
 }
