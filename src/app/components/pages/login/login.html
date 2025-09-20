@@ -17,9 +17,9 @@ Account</pre>
 
     <span class="reqired" [class.showReqired]="showReqiredPassword">*this filed is reqired</span>
 
-    <button class="login-button" >Login</button>
+    <button class="login-button" (click)="login()">Login</button>
     </form>
-    <button class="signUp-button" >Sign Up</button>
+    <button class="signUp-button" (click)="navigateToSignUpPage()">Sign Up</button>
 </div>
 
 @if(showMessage)

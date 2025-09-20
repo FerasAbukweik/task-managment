@@ -11,6 +11,9 @@ import { Message } from '../../message/message';
 })
 export class Login {
 
+    constructor(
+    private _router : Router) {}
+
   showReqiredUserName : boolean = false;
   showReqiredPassword : boolean = false;
   showMessage : boolean = false;
@@ -23,4 +26,26 @@ export class Login {
       password : new FormControl("" , [Validators.required])
     }
   )
+
+
+  login()
+  {
+    
+    if (!this.inputData.valid){
+  this.showReqiredUserName = this.inputData.get('userName')?.invalid ?? true;
+  this.showReqiredPassword = this.inputData.get('password')?.invalid ?? true;
+  return;
+   }
+
+      this.showReqiredUserName = false;
+      this.showReqiredPassword = false;
+      
+
+  }
+
+  navigateToSignUpPage()
+  {
+    this._router.navigate(['signup'])
+  }
+
 }
