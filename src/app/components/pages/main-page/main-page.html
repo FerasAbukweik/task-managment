@@ -61,7 +61,7 @@
 
 
 <!-- if searchInput!= '' show search area -->
-@if(searchInput != "" || showSearchArea)
+@if(searchInput != "")
 {
 <app-search-area [tasksData]="filterDataForSearch()" [tasksTypes]="tasksTypes" [typesColors]="typesColors"></app-search-area>
 }

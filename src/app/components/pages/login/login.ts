@@ -48,7 +48,7 @@ export class Login {
    }
 
 
-      // continue log in code here -------------------
+      // continue login code here -------------------
 
   }
 

@@ -23,8 +23,6 @@ export class MainPage implements OnInit {
   tasksTypes : string[] = ["To Do" , "In Progress" , "Review" , "Done"];
   //if true show filter options
   showFilterOptions : boolean = false;
-  //it true show search area
-  showSearchArea : boolean = false;
   //previousle selected filter options
   selectedFilterOptions : number = 0;
   //if true show edit tasks component
@@ -64,7 +62,6 @@ ngOnInit(): void {
 //toggle Show Filter Options
 toggleShowFilterOptions(){
 this.showFilterOptions = !this.showFilterOptions;
-this.showSearchArea = false;
 this.searchInput = "";
 }
 
