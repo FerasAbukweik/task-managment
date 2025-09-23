@@ -2,6 +2,7 @@
     <div class="container column">
     @for (tasktype of tasksTypes; track tasktype)
     {
+        <!-- option -->
         <div class="row">
         <input type="checkbox" class="checkbox" id="{{tasktype}}" formControlName="{{tasktype.split(' ').join('')}}">
         <label class="item" for="{{tasktype}}">{{tasktype}}</label>

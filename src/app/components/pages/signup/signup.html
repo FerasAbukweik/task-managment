@@ -1,14 +1,19 @@
 <div class="container">
+    <!-- header signup text -->
     <span class="signup-text">Sign Up</span>
-    <form [formGroup]="inputData">
 
+    <!-- form -->
+    <form [formGroup]="inputData">
+        <!-- input -->
     <label for="userName">User Name</label>
     <input type="text" id="userName" [class.reqired-input]="showReqiredUserName"
     (click)="showReqiredUserName = false"
     formControlName="userName">
 
     <span class="reqired" [class.showReqired]="showReqiredUserName">*this filed is reqired</span>
+    <!--  -->
 
+    <!-- input -->
     <label for="email" >Email</label>
     <input type="email" id="email" [class.reqired-input]="showReqiredEmail || showWrongEmail"
     (click)="showReqiredEmail = false"
@@ -18,7 +23,7 @@
     <span class="reqired" [class.showReqired]="showReqiredEmail">*this filed is reqired</span>
     <span class="reqired" [class.showReqired]="showWrongEmail">*wrong email</span>
     </div>
-
+    <!--  -->
     <label for="phone">Phone</label>
     <input type="text" id="phone" [class.reqired-input]="showReqiredPhone || showWrongPhoneNumber"
     (click)="showReqiredPhone = false"
@@ -29,20 +34,29 @@
     <span class="reqired" [class.showReqired]="showWrongPhoneNumber">*wrong phone number</span>
     </div>
 
+    <!-- input -->
     <label for="password" >Password</label>
     <input type="password" id="password" [class.reqired-input]="showReqiredPassword"
     (click)="showReqiredPassword = false"
     formControlName="password">
 
     <span class="reqired" [class.showReqired]="showReqiredPassword">*this filed is reqired</span>
+    <!--  -->
+
+    <!-- signup button -->
     <button class="signup-button" (click)="signup()">Sign Up</button>
+    <!--  -->
     </form>
+
+    <!-- footer -->
     <div class="row">
     <span class="login-text">Already Have An Account?</span>
     <button class="login-button" (click)="navigateToLogin()">Login</button>
     </div>
 </div>
 
+
+<!-- show error message -->
 @if(showMessage)
 {
     <app-message [message]="message" (showMessage)="showMessage = $event"></app-message>

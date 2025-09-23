@@ -7,6 +7,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './type-indicator.css'
 })
 export class TypeIndicator {
+  //type in enum
   @Input() type : number | null = null;
+  //types colors
   @Input() typesColors : string[] = [];
 }

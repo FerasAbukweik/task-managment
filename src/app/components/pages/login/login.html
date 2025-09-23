@@ -1,26 +1,31 @@
 <div class="container">
+    <!-- Login to Your Account text -->
     <pre class="login-text">Login to Your
 Account</pre>
     <form [formGroup]="inputData">
-
+    <!-- input -->
     <label for="userName">User Name</label>
     <input type="text" id="userName" [class.reqired-input]="showReqiredUserName"
     (click)="showReqiredUserName = false"
     formControlName="userName">
-
+    
     <span class="reqired" [class.showReqired]="showReqiredUserName">*this filed is reqired</span>
+    <!--  -->
 
+    <!-- input -->
     <label for="password">Password</label>
     <input type="password" id="password"  [class.reqired-input]="showReqiredPassword"
     (click)="showReqiredPassword = false"
     formControlName="password">
 
     <span class="reqired" [class.showReqired]="showReqiredPassword">*this filed is reqired</span>
-
+    <!--  -->
     <button class="login-button" (click)="login()">Login</button>
     </form>
     <button class="signUp-button" (click)="navigateToSignUpPage()">Sign Up</button>
 </div>
+
+<!-- show error message -->
 
 @if(showMessage)
 {

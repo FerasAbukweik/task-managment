@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TaskData } from '../../../interfaces/task/task-data'; 
-import { SearchArea } from './components/search-area/search-area';
+import { SearchArea } from './main-page-components/search-area/search-area'; 
 import { FormsModule } from '@angular/forms';
 import { taskTypes } from '../../../enums/taskenums/task-type'; 
-import { FilterOptions } from "./components/filter-options/filter-options";
-import { filterDataEnum } from './components/enums/filtered-data-enum';
-import { EditTask } from './components/edit-task/edit-task';
+import { FilterOptions } from './main-page-components/filter-options/filter-options'; 
+import { filterDataEnum } from './main-page-components/enums/filtered-data-enum'; 
+import { EditTask } from './main-page-components/edit-task/edit-task'; 
 
 @Component({
   selector: 'app-main-page',
@@ -13,17 +13,26 @@ import { EditTask } from './components/edit-task/edit-task';
   templateUrl: './main-page.html',
   styleUrl: './main-page.css'
 })
-export class MainPage {
+export class MainPage implements OnInit {
 
+  //search area input
   searchInput : string = "";
+  //types colors will be shared from here to everywhere its needed so when its changed here it doesnt have to be changed everywhere
   typesColors : string[] = ["#c2dfff" , "#ffe6a2" , "#ffd5ab" , "#bfeed1"];
+  //tasks types text needed because in tasksData its stored as enum
   tasksTypes : string[] = ["To Do" , "In Progress" , "Review" , "Done"];
+  //if true show filter options
   showFilterOptions : boolean = false;
+  //it true show search area
   showSearchArea : boolean = false;
+  //previousle selected filter options
   selectedFilterOptions : number = 0;
+  //if true show edit tasks component
   showEditTasks : boolean = false;
+  //to send to edit task component
   currTask! : TaskData;
 
+  //all tasks data
 tasksData: TaskData[][] = [
   [
     { id: 1, task: "Finish project report", state: false, type: taskTypes.toDo, startDate: new Date('2025-09-20'), GoalDate: new Date('2025-09-25') },
@@ -47,14 +56,22 @@ tasksData: TaskData[][] = [
   ]
 ];
 
+//get data from api here
+ngOnInit(): void {
+//get data from api here -------------------
+}
+
+//toggle Show Filter Options
 toggleShowFilterOptions(){
 this.showFilterOptions = !this.showFilterOptions;
 this.showSearchArea = false;
 this.searchInput = "";
 }
 
+//filtering method using binary 
 filterDataForSearch(): TaskData[] {
   let allTasks: TaskData[][] = [];
+  //if something is selected filter data
   if(this.selectedFilterOptions != 0)
   {
     if((filterDataEnum.toDo & this.selectedFilterOptions) == filterDataEnum.toDo)
@@ -74,20 +91,24 @@ filterDataForSearch(): TaskData[] {
       allTasks.push(this.tasksData[3])
     }
   }
+  //if nothing is selected show all data
   else{
     allTasks = this.tasksData;
   }
 
+  //make data in one list insted of list of list
   let all_tasks = allTasks.flat();
   
 
+  //filter based on search input
   return all_tasks.filter(task =>
     task.task.toUpperCase().includes(this.searchInput.toUpperCase()));
 }
 
+//toggle small checkbox under each  task
 toggleStatus(taskId : number , newStatus : boolean)
 {
-  
+  //toggle small checkbox under each task -------------------
 }
 
 }

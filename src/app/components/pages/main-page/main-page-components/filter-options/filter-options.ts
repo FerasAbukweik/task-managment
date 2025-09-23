@@ -9,12 +9,18 @@ import { filterDataEnum } from '../enums/filtered-data-enum';
   styleUrl: './filter-options.css'
 })
 export class FilterOptions implements OnInit{
+  //options to show in filter section
   @Input() tasksTypes : string[] = [];
-  @Output() selected = new EventEmitter<number>();
+  //previously Selected Options
   @Input() previouslySelectedOptions : number = 0;
+  //new selected options
+  @Output() selected = new EventEmitter<number>();
 
-  chosenOptions : FormGroup | undefined;
 
+  // chosenOptions data
+  chosenOptions! : FormGroup;
+
+  //give init values
   ngOnInit(): void {
     this.chosenOptions = new FormGroup ({
     ToDo : new FormControl((filterDataEnum.toDo & this.previouslySelectedOptions) == filterDataEnum.toDo),
@@ -24,6 +30,7 @@ export class FilterOptions implements OnInit{
   })
   }
 
+  //if clicked filter button
   returnData()
   {
     let toRet : number = 0;

@@ -1,5 +1,7 @@
 <div class="container column">
     <span class="header-text">{{toShowData.message}}</span>
+
+    <!-- cancel button Confirm button row -->
     <div class="row">
     <button class="cancel button" type="button" (click)="isConfirmed.emit(false)">cancel</button>
     <button class="Confirm button" type="button"
@@ -7,4 +9,5 @@
     (click)="isConfirmed.emit(true)"
     >{{toShowData.confirmButtonText}}</button>
     </div>
+    <!--  -->
 </div>

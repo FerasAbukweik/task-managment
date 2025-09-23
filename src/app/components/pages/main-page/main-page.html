@@ -1,5 +1,7 @@
 <div class="main column" >
+    <!-- main page header in row-->
     <div class="row main-header">
+        <!-- search area -->
         <label for="search"><span class="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></span></label>
         <div class="search-container">
             <input type="text" class="container search-input" id="search"
@@ -18,17 +20,32 @@
                 </app-filter-options>
                 }
         </div>
+        <!--  -->
+
+        <!-- just for the look -->
         <span class="container">Today</span>
         <span class="container">Week</span>
         <span class="container">Month</span>
+        <!--  -->
     </div>
+    <!--  -->
+
+    <!-- Task Managment text -->
     <span class="Task-Managment-text">Task Managment</span>
+    <!--  -->
+
+    <!-- show tasks colums -->
     <div class="row body-row">
+        <!-- show columns one by one based on tasksData.length -->
         @for(tasksPerType of tasksData; track tasksPerType ; let i = $index)
         {
         <div class="container column">
+            <!-- column header type text -->
             <span class="header-text" [style.background-color]="typesColors[i]">{{tasksTypes[i]}}</span>
+
+            <!-- show tasks for current column -->
             @for (task of tasksPerType; track task ; let j = $index) {
+                <!-- single task -->
             <span class="container" (click)="currTask=task; showEditTasks = true">
                 <span class="task">{{task.task}}</span>
                 <input type="checkbox" class="state-checkBox" (click)="$event.stopPropagation();"
@@ -39,13 +56,17 @@
         </div>
         }
     </div>
+    <!--  -->
 </div>
 
-@if(searchInput != "")
+
+<!-- if searchInput!= '' show search area -->
+@if(searchInput != "" || showSearchArea)
 {
 <app-search-area [tasksData]="filterDataForSearch()" [tasksTypes]="tasksTypes" [typesColors]="typesColors"></app-search-area>
 }
 
+<!-- if clicked on task show its data -->
 @if(showEditTasks)
 {
 <app-edit-task [tasksTypes]="tasksTypes" (showThisMessage)="showEditTasks = false" [currTask]="currTask"></app-edit-task>

@@ -8,8 +8,10 @@ import { Component, EventEmitter, Input, OnInit, Output, output } from '@angular
 })
 export class Message implements OnInit{
 
+  //to show message
   @Input() message! : string;
 
+  //result
   @Output() showMessage = new EventEmitter<boolean>();
   ngOnInit(): void {
     

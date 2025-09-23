@@ -1,19 +1,22 @@
 <div class="container">
     @for(task of tasksData; track task ; let i = $index)
     {
+        <!-- i!=0 to not show line on top of first task -->
         @if(i!=0)
         {
             <hr>
         }
+        <!-- single task -->
     <div class="item row" (click)="currTask = task; showEditTasks = true">
         <span class="task">{{task.task}}</span>
         <app-type-indicator [type]="task.type" [typesColors]="typesColors"></app-type-indicator>
         <span class="type">{{tasksTypes[task.type]}}</span>
     </div>
+    <!--  -->
     }
 </div>
 
-
+<!-- if clicked on task show edit page -->
 @if(showEditTasks)
 {
 <app-edit-task [tasksTypes]="tasksTypes" (showThisMessage)="showEditTasks = false" [currTask]="currTask"></app-edit-task>

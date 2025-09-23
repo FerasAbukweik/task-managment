@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule ,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Message } from '../../message/message';
+import { Message } from '../../shared-components/message/message';
 
 @Component({
   selector: 'app-signup',
@@ -11,17 +11,27 @@ import { Message } from '../../message/message';
 })
 export class Signup {
 
+  constructor(private _router : Router) {}
+
+
+  //show Reqired User Name under its input and make boarder color red
   showReqiredUserName : boolean = false;
+  //show Reqired Email under its input and make boarder color red
   showReqiredEmail : boolean = false;
+  //show Reqired Phone under its input and make boarder color red
   showReqiredPhone : boolean = false;
+  //show Reqired Password under its input and make boarder color red
   showReqiredPassword : boolean = false;
+  //show WrongEmail under its input and make boarder color red
   showWrongEmail : boolean = false;
+  //show Wrong Phone Number under its input and make boarder color red
   showWrongPhoneNumber : boolean = false;
+  //if true show error message
   showMessage : boolean = false;
+  //error message to show
   message :string = "";
 
-  constructor(private _router : Router) {}
-  
+  // input data from user
   inputData : FormGroup = new FormGroup(
     {
       userName : new FormControl("" , [Validators.required]) , 
@@ -32,13 +42,29 @@ export class Signup {
   )
 
 
+
+  //if clicked signup
     signup()
   {
+
+    //return show error messages to default state 
+    this.showWrongPhoneNumber = false;
+    this.showWrongEmail = false;
+    this.showReqiredPassword = false;
+    this.showReqiredPhone = false;
+    this.showReqiredEmail = false;
+    this.showReqiredUserName = false;
     
-  if (!this.inputData.valid){
+
+
+    //check if all input is valid
+    if (!this.inputData.valid){
+      //check username input
     this.showReqiredUserName = this.inputData.get('userName')?.invalid ?? true;
+      //check password input
     this.showReqiredPassword = this.inputData.get('password')?.invalid ?? true;
 
+    //check email input
     let emailInput = this.inputData.get('email');
     if(emailInput?.invalid ?? false)
     {
@@ -46,25 +72,18 @@ export class Signup {
       {
         this.showReqiredEmail = true;
       }
+      //if it is types the check if its corrent email
       else
       {
-        this.showReqiredEmail = false;
-      }
-      if(emailInput?.errors?.['email'] ?? false)
-      {
-        this.showWrongEmail = true;
-      }
-      else
-      {
-        this.showWrongEmail = false;
+        if(emailInput?.errors?.['email'] ?? false)
+          {
+            this.showWrongEmail = true;
+          }
       }
     }
-    else
-    {
-      this.showReqiredEmail = false;
-      this.showWrongEmail = false;
-    }
+    //if input is valid remove reqired messages
 
+    //check phone input
     let phoneInput = this.inputData.get('phone');
     if(phoneInput?.invalid ?? false)
     {
@@ -72,30 +91,28 @@ export class Signup {
       {
         this.showReqiredPhone = true;
       }
-      if((phoneInput?.errors?.['minlength'] ?? false) || (phoneInput?.errors?.['maxlength'] ?? false))
+      //if it is types the check if its corrent phone number
+      else
       {
-        this.showWrongPhoneNumber = true;
+        if((phoneInput?.errors?.['minlength'] ?? false) || (phoneInput?.errors?.['maxlength'] ?? false))
+          {
+            this.showWrongPhoneNumber = true;
+          }
       }
     }
-    else
-    {
-      this.showReqiredPhone = false;
-      this.showWrongPhoneNumber = false;
-    }
 
+
+    // stop code if something is not valid
       return;
   }
-  this.showWrongPhoneNumber = false;
-  this.showWrongEmail = false;
-  this.showReqiredPassword = false;
-  this.showReqiredPhone = false;
-  this.showReqiredEmail = false;
-  this.showReqiredUserName = false;
 
 
+ // continue signup code here -------------------
 
 }
 
+
+// if clicked login go to login page
   navigateToLogin()
   {
     this._router.navigate(['login']);

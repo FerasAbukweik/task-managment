@@ -10,9 +10,15 @@ import { EditTask } from '../edit-task/edit-task';
   styleUrl: './search-area.css'
 })
 export class SearchArea {
+  //tasks data
   @Input() tasksData: TaskData[] = [];
+  //tasks type string because in tasksData.type its stored as enum 
   @Input() tasksTypes : string[] = [];
+  //for dot on left of type color
   @Input() typesColors : string[] = [];
+
+  //to show edit message
   showEditTasks : boolean = false;
+  //save curr task here before sending it to edit task page
   currTask! : TaskData;
 }
